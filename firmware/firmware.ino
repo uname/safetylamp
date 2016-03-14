@@ -28,10 +28,7 @@ void loop()
 {
     const int count = sizeof(lampLights) / sizeof(lampLights[0]);
     for(int i = 0; i < 2; i++) {
-        if(lampLights[i].frequency < 1) {
-            lampLights[i].frequency = 1;
-        }
-        uint32_t ms = 1000 / lampLights[i].frequency;
+        uint32_t ms = 1000 / lampLights[i].frequency; // make sure frequency > 0
         SET_LAMP_COLOR(lampLights[i].color);
         uint32_t t0 = millis();
         while(1) {
